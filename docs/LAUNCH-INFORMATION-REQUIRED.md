@@ -20,7 +20,7 @@ Run `node build.mjs` to see what's still missing. Nothing on the site has been i
 | Item | Notes |
 |---|---|
 | **Business phone** | `business.phone` and `business.phoneE164`. Currently a visible placeholder. |
-| **Contact form key** | The site runs on Cloudflare Pages, so the form uses **Web3Forms**. Sign up free at web3forms.com with the inbox that should receive requests, then paste the access key into `form.accessKey` in `site.config.mjs`. Until then the form shows a notice and doesn't send. |
+| **Contact form (n8n)** | Create the n8n workflow (see `docs/N8N-FORM-SETUP.md`) and put its production webhook URL in `form.webhookUrl` in `site.config.mjs`. Until then the form shows a notice and doesn't send. |
 | **Register the business name** | Texas assumed name certificate: Form 503 with the Texas Secretary of State (LLC or corporation), or with the Dallas County Clerk (sole proprietor). Then set `business.publicNameConfirmed: true`. Check SOSDirect, the USPTO and Google Maps for "Shorehaven" conflicts first. |
 
 Optional: `business.geo` with the office's real coordinates.
@@ -29,7 +29,7 @@ Optional: `business.geo` with the office's real coordinates.
 
 - [ ] An attorney has reviewed the Privacy Policy, Terms and Disclosures (Texas law, administrative-services wording).
 - [ ] An ERISA attorney has confirmed the administrative-services role.
-- [ ] Web3Forms: a test submission from the live site arrived in the inbox.
+- [ ] n8n: a test submission from the live site landed on the thank-you page and ran the workflow.
 - [ ] Cloudflare Pages: the site is deployed. Then add the Search Console verification code to `site.googleSiteVerification`.
 
 ## Optional (hidden until set)

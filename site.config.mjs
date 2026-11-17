@@ -72,11 +72,13 @@ export default {
   team: [],
   about: { story: null, professionalBackground: null },
   /**
-   * Contact form — hosted on Cloudflare Pages, so submissions go to Web3Forms
-   * (https://web3forms.com), which emails them to you. Paste the free access key
-   * here. Until then the form shows a "not connected yet" notice and won't send.
+   * Contact form — submissions are POSTed to an n8n Webhook (production URL,
+   * https://…/webhook/…). The n8n workflow routes them (email, sheet, CRM) and
+   * should answer with a redirect to `redirect_to` (the /thank-you/ page).
+   * Until webhookUrl is set, the form shows a "not connected yet" notice and won't send.
+   * See docs/N8N-FORM-SETUP.md.
    */
-  form: { name: 'consultation', provider: 'web3forms', accessKey: null },
+  form: { name: 'consultation', provider: 'n8n', webhookUrl: null },
   analytics: { plausibleDomain: null },
 
   /** MEDIA — self-hosted, people-free imagery in src/assets/media/. */

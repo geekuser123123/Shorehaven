@@ -24,6 +24,13 @@ await mkdir(out, { recursive: true });
 await cp(join(root, 'src/assets'), join(out, 'assets'), { recursive: true });
 await cp(join(root, 'src/static'), out, { recursive: true });
 
+// Allow the contact form to post to the configured n8n webhook (CSP form-action).
+{
+  const hp = join(out, '_headers');
+  const formOrigin = cfg.form.webhookUrl ? new URL(cfg.form.webhookUrl).origin : '';
+  await writeFile(hp, (await readFile(hp, 'utf8')).replace(' __FORM_ORIGIN__', formOrigin ? ' ' + formOrigin : ''));
+}
+
 const h = createHash('sha256');
 for (const f of ['css/styles.css', 'js/main.js']) h.update(await readFile(join(root, 'src/assets', f)));
 const assetVersion = h.digest('hex').slice(0, 10);

@@ -1,5 +1,13 @@
 import { icon, esc, B, cfg, SITE, ph, SERVICES, phoneHtml, phoneHref, emailHtml, hoursHtml, showAddress, addressHtml } from '../lib.mjs';
 
+/** n8n production webhook URL (https only), or null while not connected. */
+const FORM_URL = (() => {
+  const u = cfg.form.webhookUrl;
+  if (!u) return null;
+  if (!/^https:\/\/[^\s"'<>]+$/.test(u)) throw new Error('form.webhookUrl must be an https:// URL');
+  return u;
+})();
+
 const PLAN_STATUS = ['No plan yet', 'I have a Solo 401(k)', 'I have a self-directed 401(k)', 'I have another plan type', 'Not sure'];
 const BUSINESS_TYPES = ['Sole proprietor / independent contractor', 'Single-member LLC', 'Multi-member LLC or partnership', 'S corporation', 'C corporation', 'Not yet established', 'Other / not sure'];
 const TIMES = ['Morning', 'Midday', 'Afternoon', 'No preference'];
@@ -19,13 +27,13 @@ export function contactBlock() {
     <div class="contact__form">
       <h3 class="h3">Meeting request</h3>
       <p class="muted">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required. Takes about two minutes.</p>
-      ${cfg.form.accessKey ? '' : `<p class="form__notice" role="status">${ph(null, 'Web3Forms access key — form not connected yet')} The online form isn’t connected yet. ${B.phone ? `Please call ${phoneHtml()} for now.` : 'Please check back soon.'}</p>`}
-      <form name="${cfg.form.name}" method="POST" action="https://api.web3forms.com/submit" class="form" novalidate data-form${cfg.form.accessKey ? '' : ' data-form-disabled'}>
-        <input type="hidden" name="access_key" value="${esc(cfg.form.accessKey || '')}">
-        <input type="hidden" name="subject" value="New meeting request — ${esc(B.publicName)} website">
-        <input type="hidden" name="from_name" value="${esc(B.publicName)} website">
-        <input type="hidden" name="redirect" value="${SITE}/thank-you/">
-        <p class="hp" aria-hidden="true"><label>Leave this field empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+      ${FORM_URL ? '' : `<p class="form__notice" role="status">${ph(null, 'n8n webhook URL — form not connected yet')} The online form isn’t connected yet. ${B.phone ? `Please call ${phoneHtml()} for now.` : 'Please check back soon.'}</p>`}
+      <form name="${cfg.form.name}" method="POST" action="${esc(FORM_URL || '#')}" class="form" novalidate data-form${FORM_URL ? '' : ' data-form-disabled'}>
+        <input type="hidden" name="form_name" value="${esc(cfg.form.name)}">
+        <input type="hidden" name="business" value="${esc(B.publicName)}">
+        <input type="hidden" name="site" value="${SITE}/">
+        <input type="hidden" name="redirect_to" value="${SITE}/thank-you/">
+        <p class="hp" aria-hidden="true"><label>Leave this field empty <input name="company_website" tabindex="-1" autocomplete="off"></label></p>
         <div class="form__row">
           <div class="field"><label for="first-name">First name <span aria-hidden="true">*</span></label><input id="first-name" name="first_name" type="text" autocomplete="given-name" required maxlength="80"></div>
           <div class="field"><label for="last-name">Last name <span aria-hidden="true">*</span></label><input id="last-name" name="last_name" type="text" autocomplete="family-name" required maxlength="80"></div>

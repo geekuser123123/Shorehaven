@@ -66,7 +66,7 @@ export const privacy = legal({
 <p>We use service providers who process information on our behalf, only as needed to provide their services:</p>
 <ul>
   <li><strong>Cloudflare, Inc.</strong> — website hosting and content delivery.</li>
-  <li><strong>Web3Forms</strong> — processing contact form submissions and delivering them to us by email.</li>
+  <li><strong>n8n</strong> — workflow automation that receives contact form submissions and routes them to our team.</li>
   ${cfg.analytics.plausibleDomain ? '<li><strong>Plausible Analytics</strong> — privacy-focused, cookie-free aggregate website statistics.</li>' : ''}
   <li>Email, telephone and scheduling tools we use to receive and respond to your messages.</li>
 </ul>
