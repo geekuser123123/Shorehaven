@@ -15,7 +15,7 @@
 export default {
   site: {
     url: 'https://shorehaven.kevin-c4h.workers.dev', // no trailing slash
-    googleSiteVerification: null, // Search Console HTML-tag "content" value
+    googleSiteVerification: 'Sy_3XZlnkQAyUkIxWXTfHz3lAxNV8xF6ErQT2hxja04', // Search Console HTML-tag "content" value
     locale: 'en_US',
     language: 'en-US',
   },
