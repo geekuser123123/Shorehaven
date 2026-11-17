@@ -13,7 +13,7 @@ const faqs = [
   { q: 'When is Form 5500-EZ required?', a: '<p>Generally for any year a one-participant plan’s total assets exceed $250,000 at year-end, and always in the plan’s final year. For calendar-year plans it’s generally due July 31, extendable with Form 5558.</p>' },
   { q: 'What can a self-directed 401(k) hold?', a: '<p>What the plan document permits and federal law doesn’t prohibit — commonly real estate, private loans, private company interests, qualifying bullion and public securities. Collectibles are out, and dealings with “disqualified persons” such as you or close family are prohibited.</p>' },
   { q: 'Is this investment, legal or tax advice?', a: '<p>No. It’s administrative support and general education. For individualized advice, consult a licensed financial professional, CPA or attorney — we’ll gladly coordinate with yours.</p>' },
-  { q: 'How do I get started?', a: cfg.form.webhookUrl ? `<p>${B.phone ? `Call ${phoneHtml()} or use` : 'Use'} the <a href="#contact">meeting request form</a> below.</p>` : `<p>Call ${phoneHtml()}, Monday through Friday, 9:00 AM to 5:00 PM. We’ll set a time to meet at our Dallas office. See <a href="#contact">visit &amp; contact</a> below.</p>` },
+  { q: 'How do I get started?', a: cfg.form.webhookUrl ? `<p>${B.phone ? `Call ${phoneHtml()} or use` : 'Use'} the <a href="#contact">meeting request form</a> below.</p>` : `<p>Call ${phoneHtml()}, Monday through Friday, 9:00 AM to 5:00 PM. We’ll set a time to meet at our Dallas office. Details are in the <a href="#contact">contact section</a> below.</p>` },
 ];
 
 const STEPS = [
