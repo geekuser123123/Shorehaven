@@ -33,7 +33,7 @@ and won't send. Setup steps: `docs/N8N-FORM-SETUP.md`.
 
 ## Office
 
-**8360 Lyndon B Johnson Fwy, Dallas, TX 75243** (storefront office). Phone: placeholder until provided.
+**8360 Lyndon B Johnson Fwy, Dallas, TX 75243** (storefront office). Phone: **(469) 259-7708**.
 
 ## Structure
 

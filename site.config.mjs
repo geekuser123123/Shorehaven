@@ -28,8 +28,8 @@ export default {
     owner: null, // optional
     foundingYear: null,
 
-    phone: null, // [REQUIRED] e.g. '(214) 555-0100' — shows a placeholder until set
-    phoneE164: null, // e.g. '+12145550100'
+    phone: '(469) 259-7708',
+    phoneE164: '+14692597708',
     email: null, // optional — hidden until set; visitors use the contact form
 
     /**

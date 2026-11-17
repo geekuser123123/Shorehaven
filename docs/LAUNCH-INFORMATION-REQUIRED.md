@@ -5,6 +5,7 @@ Run `node build.mjs` to see what's still missing. Nothing on the site has been i
 ## Already set
 
 - [x] Name: **Shorehaven**
+- [x] Phone: **(469) 259-7708**
 - [x] Site URL: `https://shorehaven.pages.dev`
 - [x] Hours: **Monday–Friday, 9:00 AM – 5:00 PM (Central Time)**, office meetings by appointment
 - [x] Business type: **storefront office** at **8360 Lyndon B Johnson Fwy, Dallas, TX 75243** (Google Business Profile "Local store")
@@ -19,7 +20,6 @@ Run `node build.mjs` to see what's still missing. Nothing on the site has been i
 
 | Item | Notes |
 |---|---|
-| **Business phone** | `business.phone` and `business.phoneE164`. Currently a visible placeholder. |
 | **Contact form (n8n)** | Create the n8n workflow (see `docs/N8N-FORM-SETUP.md`) and put its production webhook URL in `form.webhookUrl` in `site.config.mjs`. Until then the form shows a notice and doesn't send. |
 | **Register the business name** | Texas assumed name certificate: Form 503 with the Texas Secretary of State (LLC or corporation), or with the Dallas County Clerk (sole proprietor). Then set `business.publicNameConfirmed: true`. Check SOSDirect, the USPTO and Google Maps for "Shorehaven" conflicts first. |
 

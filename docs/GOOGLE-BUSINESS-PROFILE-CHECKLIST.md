@@ -19,7 +19,7 @@ Use this **after** the website is live and Search Console is verified.
   hours. Google requires a **complete, real street address that is staffed during those hours**.
 - **Address:** **8360 Lyndon B Johnson Fwy, Dallas, TX 75243**, entered exactly as on the website.
   If the office has a suite number, add it to both.
-- **Phone:** to be provided. Use a local number answered during business hours.
+- **Phone:** **(469) 259-7708**.
 - **Hours:** Monday–Friday, 9:00 AM – 5:00 PM.
 - **Primary category:** **Financial consultant**.
 - **Secondary category:** **Business administration service**.
