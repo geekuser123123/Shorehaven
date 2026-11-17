@@ -1,0 +1,93 @@
+/**
+ * ============================================================================
+ *  SHOREHAVEN — SITE & BUSINESS CONFIGURATION
+ *  Single source of truth for the page, footer, structured data (JSON-LD),
+ *  sitemap and canonical URLs.
+ * ============================================================================
+ *
+ *  - `null` means "not provided yet". Required items show a marked placeholder
+ *    on the page and are listed when you run `node build.mjs`.
+ *  - `STRICT=1 node build.mjs` fails while required launch items are missing.
+ *  - Nothing here is invented. Never add private data (EIN, home address).
+ * ============================================================================
+ */
+
+export default {
+  site: {
+    url: 'https://shorehaven.pages.dev', // no trailing slash
+    googleSiteVerification: null, // Search Console HTML-tag "content" value
+    locale: 'en_US',
+    language: 'en-US',
+  },
+
+  business: {
+    legalName: null, // PRIVATE — schema only, and only if different from publicName
+    publicName: 'Shorehaven',
+    tagline: 'Solo & Self-Directed 401(k) Plan Support',
+    publicNameConfirmed: false, // true once the assumed name certificate is filed (Texas SOS, or Dallas County Clerk for a sole proprietor)
+    owner: null, // optional
+    foundingYear: null,
+
+    phone: null, // [REQUIRED] e.g. '(214) 555-0100' — shows a placeholder until set
+    phoneE164: null, // e.g. '+12145550100'
+    email: null, // optional — hidden until set; visitors use the contact form
+
+    /**
+     * "office": a staffed storefront office that receives clients during the
+     * posted hours (Google Business Profile "Local store"). The address shows
+     * on the site, the map appears and storefront schema is output ONLY once
+     * streetAddress and postalCode are real. Until then, marked placeholders.
+     */
+    locationType: 'office',
+    address: {
+      streetAddress: '8360 Lyndon B Johnson Fwy', // real, staffed office — add suite if any
+      addressLocality: 'Dallas',
+      addressRegion: 'TX',
+      postalCode: '75243',
+      addressCountry: 'US',
+    },
+    geo: null, // real coordinates of the office only
+    serviceArea: ['Dallas, TX'],
+
+    hours: [
+      { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '17:00' },
+    ],
+    hoursNote: 'Office meetings by appointment.',
+    timeZoneLabel: 'Central Time',
+
+    sameAs: [],
+  },
+
+  /** All confirmed by the owner. */
+  services: {
+    education: { offered: true },
+    solo401k: { offered: true },
+    planSetup: { offered: true },
+    filing: { offered: true },
+    recordkeeping: { offered: true },
+    ongoing: { offered: true },
+    consultation: { offered: true },
+  },
+
+  team: [],
+  about: { story: null, professionalBackground: null },
+  /**
+   * Contact form — hosted on Cloudflare Pages, so submissions go to Web3Forms
+   * (https://web3forms.com), which emails them to you. Paste the free access key
+   * here. Until then the form shows a "not connected yet" notice and won't send.
+   */
+  form: { name: 'consultation', provider: 'web3forms', accessKey: null },
+  analytics: { plausibleDomain: null },
+
+  /** MEDIA — self-hosted, people-free imagery in src/assets/media/. */
+  media: {
+    // Pexels video 15613412 — drone footage of the Dallas skyline at golden hour (Pexels License)
+    heroVideo: { webm: '/assets/media/hero.webm', mp4: '/assets/media/hero.mp4', poster: '/assets/media/hero-poster.webp' },
+    // Stock photos from Pexels (Pexels License), no identifiable people — sources in docs/MEDIA.md
+    images: {
+      dock: { src: '/assets/media/dock.webp', pos: '40% 60%', alt: 'Wooden dock with a bench reaching into a calm lake' },
+      downtown: { src: '/assets/media/downtown.webp', pos: '50% 35%', alt: 'Downtown Dallas towers above a tree-lined avenue' },
+      bridge: { src: '/assets/media/bridge.webp', pos: '50% 50%', alt: 'Margaret Hunt Hill Bridge and the Dallas skyline at dusk' },
+    },
+  },
+};
