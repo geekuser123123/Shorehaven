@@ -52,7 +52,7 @@ Use this **after** the website is live and Search Console is verified.
 - [ ] **Primary category:** the most accurate available category for the services you actually provide (search the category list in GBP). Don't choose an unrelated category to get a different verification method.
 - [ ] Address or service area, as decided in Step 3
 - [ ] Phone, matching the website exactly
-- [ ] Website: the current `site.url` (now `https://shorehaven.pages.dev/`). A custom domain looks more established to customers; if you add one later, update the GBP website field as well.
+- [ ] Website: the current `site.url` (now `https://shorehaven.kevin-c4h.workers.dev/`). A custom domain looks more established to customers; if you add one later, update the GBP website field as well.
 - [ ] Hours, matching the website
 - [ ] Description: factual and educational, with no promises of returns or tax savings, and no URLs or promotional language
 - [ ] Services: only the services enabled on the website

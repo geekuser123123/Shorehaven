@@ -6,7 +6,7 @@ Run `node build.mjs` to see what's still missing. Nothing on the site has been i
 
 - [x] Name: **Shorehaven**
 - [x] Phone: **(469) 259-7708**
-- [x] Site URL: `https://shorehaven.pages.dev`
+- [x] Site URL: `https://shorehaven.kevin-c4h.workers.dev`
 - [x] Hours: **Monday–Friday, 9:00 AM – 5:00 PM (Central Time)**, office meetings by appointment
 - [x] Business type: **storefront office** at **8360 Lyndon B Johnson Fwy, Dallas, TX 75243** (Google Business Profile "Local store")
 - [x] Services confirmed: plan setup, records and valuations, Form 5500-EZ preparation, ongoing

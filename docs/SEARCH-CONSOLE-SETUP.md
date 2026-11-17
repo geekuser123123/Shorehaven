@@ -3,7 +3,7 @@
 > Search Console verification is **not** done until the site owner completes these
 > steps and Google confirms it. Nothing in this repository verifies it automatically.
 
-**Current address:** `https://shorehaven.pages.dev`
+**Current address:** `https://shorehaven.kevin-c4h.workers.dev`
 (set in `site.config.mjs → site.url`)
 
 ## What the website already provides
@@ -19,16 +19,16 @@
 
 ---
 
-## Option A: Now, on `shorehaven.pages.dev` (URL-prefix property)
+## Option A: Now, on `shorehaven.kevin-c4h.workers.dev` (URL-prefix property)
 
-A **Domain property** needs a DNS TXT record. You don't control DNS for `pages.dev`,
+A **Domain property** needs a DNS TXT record. You don't control DNS for `workers.dev`,
 so use a **URL-prefix property** with the **HTML tag** method.
 
 1. Make sure the Cloudflare Pages project is deployed and not behind Cloudflare Access.
 2. Open <https://search.google.com/search-console> and sign in with the Google account
    that will **also manage the Google Business Profile**.
 3. Click **Add property** → **URL prefix** and enter
-   `https://shorehaven.pages.dev/`
+   `https://shorehaven.kevin-c4h.workers.dev/`
 4. Choose **HTML tag** as the verification method. Google shows a tag like:
    `<meta name="google-site-verification" content="AbCdEf123..." />`
 5. Copy **only the content value** (`AbCdEf123...`) into `site.config.mjs`:
@@ -74,7 +74,7 @@ Don't remove existing TXT records, such as SPF.
    Check the record with `dig TXT shorehaven.com +short`.
 2. **Sitemaps** → submit `sitemap.xml`.
 3. Keep the TXT record permanently.
-4. Keep the old pages.dev URL-prefix property for reference.
+4. Keep the old workers.dev URL-prefix property for reference.
 
 ---
 
