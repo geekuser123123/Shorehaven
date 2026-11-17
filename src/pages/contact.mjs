@@ -1,4 +1,4 @@
-import { icon, esc, B, cfg, SITE, ph, SERVICES, phoneHtml, phoneHref, emailHtml, hoursHtml, showAddress, addressHtml } from '../lib.mjs';
+import { icon, esc, B, cfg, SITE, ph, missing, SERVICES, phoneHtml, phoneHref, emailHtml, hoursHtml, showAddress, addressHtml } from '../lib.mjs';
 
 /** n8n production webhook URL (https only), or null while not connected. */
 const FORM_URL = (() => {
@@ -20,14 +20,11 @@ function mapEmbed() {
   return `<div class="map"><iframe title="Map showing the ${esc(B.publicName)} office" src="https://www.google.com/maps?q=${q}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>`;
 }
 
-/** Contact form + details block, rendered inside the homepage #contact section. */
-export function contactBlock() {
+/** Meeting request form (shown once the n8n webhook is connected). */
+function meetingForm() {
   return `
-  <div class="container contact">
-    <div class="contact__form">
       <h3 class="h3">Meeting request</h3>
       <p class="muted">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required. Takes about two minutes.</p>
-      ${FORM_URL ? '' : `<p class="form__notice" role="status">${ph(null, 'n8n webhook URL — form not connected yet')} The online form isn’t connected yet. ${B.phone ? `Please call ${phoneHtml()} for now.` : 'Please check back soon.'}</p>`}
       <form name="${cfg.form.name}" method="POST" action="${esc(FORM_URL || '#')}" class="form" novalidate data-form${FORM_URL ? '' : ' data-form-disabled'}>
         <input type="hidden" name="form_name" value="${esc(cfg.form.name)}">
         <input type="hidden" name="business" value="${esc(B.publicName)}">
@@ -59,7 +56,30 @@ export function contactBlock() {
         <div class="field field--check"><input id="consent" name="consent" type="checkbox" value="yes" required data-label="Consent"><label for="consent">I agree that ${esc(B.publicName)} may contact me by phone or email about my inquiry. I understand ${esc(B.publicName)} provides administrative support and education, not individualized investment, legal or tax advice, and I have read the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>. <span aria-hidden="true">*</span></label></div>
         <div class="form__error" role="alert" aria-live="assertive" data-form-error hidden></div>
         <button class="btn btn--accent btn--lg btn--block" type="submit">Send Meeting Request</button>
-      </form>
+      </form>`;
+}
+
+/** Shown instead of the form until the n8n webhook is connected — no placeholders, just a clear way to book. */
+function bookByPhone() {
+  missing.add('n8n webhook URL — online form hidden until connected');
+  return `
+      <h3 class="h3">Book a meeting</h3>
+      <p class="lead">The quickest way to set a time is a short call. We’ll find a slot that works for you and confirm the details.</p>
+      <ul class="book-steps">
+        <li><strong>Call us</strong> Monday – Friday, 9:00 AM – 5:00 PM.</li>
+        <li><strong>Tell us briefly</strong> about your business and your plan, new or existing.</li>
+        <li><strong>Pick a time</strong> to meet at our Dallas office.</li>
+      </ul>
+      ${B.phone ? `<a class="btn btn--accent btn--lg btn--block" href="${phoneHref()}">${icon('phone')} Call ${esc(B.phone)}</a>` : ''}
+      <p class="fine">Office meetings are by appointment. Please don’t share account numbers or other sensitive details by phone message.</p>`;
+}
+
+/** Contact form + details block, rendered inside the homepage #contact section. */
+export function contactBlock() {
+  return `
+  <div class="container contact">
+    <div class="contact__form">
+      ${FORM_URL ? meetingForm() : bookByPhone()}
     </div>
 
     <aside class="contact__info" aria-label="Contact details">
@@ -76,8 +96,7 @@ export function contactBlock() {
       <div class="info-card info-card--dark">
         <h3>What happens next</h3>
         <ol class="next">
-          <li>We review your request.</li>
-          <li>We contact you to arrange a time.</li>
+          ${FORM_URL ? '<li>We review your request.</li>\n          <li>We contact you to arrange a time.</li>' : '<li>You call and tell us a little about your plan.</li>\n          <li>We set a time that works for you.</li>'}
           <li>We meet at our Dallas office and agree what support would help.</li>
         </ol>
         <p class="fine">Please don’t send Social Security numbers, account numbers or passwords through this website.</p>

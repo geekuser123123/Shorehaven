@@ -785,3 +785,13 @@ h2 { font-size: clamp(2rem, 3.4vw, 2.75rem); }
 .haven-card__addr { font-family: var(--sans); font-weight: 600; }
 .info-list__big { font-family: var(--sans); font-weight: 700; }
 .form__notice { margin: 0 0 1.2rem; padding: .85rem 1rem; border-radius: var(--r); background: #FFF6DA; border: 1px dashed #C99A1A; color: #5A4300; font-size: .92rem; }
+.book-list { list-style: none; margin: 1.6rem 0; padding: 0; display: grid; gap: 1rem; }
+.book-list li { display: flex; gap: .9rem; align-items: flex-start; padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--paper); color: var(--ink); }
+.book-list .icon { width: 22px; height: 22px; color: var(--bay); margin-top: .2rem; flex: none; }
+.book-list__k { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-soft); margin-bottom: .15rem; }
+.book-list__big { font-size: 1.35rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+.contact__form .fine { margin-top: 1rem; }
+.book-steps { list-style: none; counter-reset: bs; margin: 1.5rem 0 1.6rem; padding: 0; display: grid; gap: .8rem; }
+.book-steps li { counter-increment: bs; position: relative; padding: .2rem 0 .2rem 2.6rem; color: var(--text); }
+.book-steps li::before { content: counter(bs); position: absolute; left: 0; top: 0; width: 1.85rem; height: 1.85rem; display: grid; place-items: center; border-radius: 50%; background: var(--bay-50); color: var(--bay); font-weight: 700; font-size: .9rem; }
+.book-steps strong { display: block; color: var(--ink); }
